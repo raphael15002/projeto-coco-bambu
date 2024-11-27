@@ -50,16 +50,3 @@ CREATE TABLE ServiceCharges (
     FOREIGN KEY (guestCheckLineItemId) REFERENCES OrderItems(guestCheckLineItemId)
 );
 
-CREATE TABLE Payments (
-    guestCheckLineItemId BIGINT,               -- Relacionamento com o item do pedido
-    paymentMethod VARCHAR(50),                 -- Método de pagamento (Cartão de Crédito, Dinheiro, etc.)
-    amount DECIMAL(10, 2),                     -- Valor pago
-    FOREIGN KEY (guestCheckLineItemId) REFERENCES OrderItems(guestCheckLineItemId)
-);
-
-
-CREATE TABLE Errors (
-    guestCheckLineItemId BIGINT,               -- Relacionamento com o item do pedido
-    errorCode VARCHAR(50),                     -- Código do erro
-    FOREIGN KEY (guestCheckLineItemId) REFERENCES OrderItems(guestCheckLineItemId)
-);
