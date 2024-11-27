@@ -116,29 +116,7 @@ def insert_data_from_json(json_file):
                     detail.get('svcRndNum', 0)  # Usando 0 se a chave não existir
                 ))
 
-        # Inserir os dados na tabela Payments (payments)
-        for detail in guest_check['detailLines']:
-            if 'paymentMethod' in detail:  # Verifica se existe a chave 'paymentMethod'
-                cursor.execute('''
-                    INSERT INTO Payments (guestCheckLineItemId, paymentMethod, amount)
-                    VALUES (%s, %s, %s)
-                ''', (
-                    detail['guestCheckLineItemId'],
-                    detail['paymentMethod'],
-                    detail.get('amount', 0)  # Usando 0 se a chave não existir
-                ))
-
-        # Inserir os dados na tabela Errors (errors)
-        for detail in guest_check['detailLines']:
-            if 'errorCode' in detail:  # Verifica se existe a chave 'errorCode'
-                cursor.execute('''
-                    INSERT INTO Errors (guestCheckLineItemId, errorCode)
-                    VALUES (%s, %s)
-                ''', (
-                    detail['guestCheckLineItemId'],
-                    detail['errorCode']
-                ))
-
+      
         
         conn.commit()
 
