@@ -24,7 +24,7 @@ Este projeto foi desenvolvido como parte do processo seletivo para a posição d
 - **requests**: Para fazer chamadas de API e obter dados.
 - **SQLAlchemy**: Para interagir com bancos de dados SQL.
 - **pytest**: Para testes automatizados.
-- **Docker**: Para criação do banco.
+- **Docker**: Para criação do banco e automatização dos scripts.
 
 ---
 
