@@ -13,6 +13,8 @@ Este projeto foi desenvolvido como parte do processo seletivo para a posição d
 - **Extração de Dados**: O projeto utiliza um arquivo json.
 - **Processamento e Transformação**: Utiliza **pandas** para processar os dados extraídos.
 - **Armazenamento em Banco de Dados**: Usa **SQLAlchemy** para armazenar os dados no banco de dados.
+- **Docker** cria uma  instância do mysql em um container para que o ambiente seja replicavel com as mesmas condiçoes em qualquer sistema.
+- 
 
 ---
 
@@ -22,6 +24,7 @@ Este projeto foi desenvolvido como parte do processo seletivo para a posição d
 - **requests**: Para fazer chamadas de API e obter dados.
 - **SQLAlchemy**: Para interagir com bancos de dados SQL.
 - **pytest**: Para testes automatizados.
+- **Docker**: Para criação do banco.
 
 ---
 
