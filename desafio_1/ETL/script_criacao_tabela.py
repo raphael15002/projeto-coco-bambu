@@ -100,5 +100,5 @@ except mysql.connector.Error as err:
     print(f"Erro ao criar as tabelas: {err}")
 finally:
     cursor.close()
-    conn.commit()  # Comita as mudanças no banco de dados
-    conn.close()   # Fecha a conexão com o banco de dados
+    conn.commit()  
+    conn.close()   
