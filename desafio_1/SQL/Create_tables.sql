@@ -1,4 +1,4 @@
--- Criar a tabela Orders
+
 CREATE TABLE Orders (
     guestCheckId BIGINT PRIMARY KEY,          -- Identificador único do pedido
     chkNum INT,                               -- Número do cheque
@@ -20,7 +20,7 @@ CREATE TABLE Orders (
     clsdFlag BOOLEAN                          -- Flag de fechado (True ou False)
 );
 
--- Criar a tabela OrderItems
+
 CREATE TABLE OrderItems (
     guestCheckLineItemId BIGINT PRIMARY KEY,   -- Identificador único do item no pedido
     guestCheckId BIGINT,                       -- Relacionamento com o pedido (foreign key)
@@ -32,7 +32,7 @@ CREATE TABLE OrderItems (
     FOREIGN KEY (guestCheckId) REFERENCES Orders(guestCheckId) -- Relacionamento com a tabela Orders
 );
 
--- Criar a tabela Taxes
+
 CREATE TABLE Taxes (
     taxNum INT PRIMARY KEY,                    -- Identificador da taxa
     guestCheckId BIGINT,                       -- Relacionamento com o pedido
@@ -43,14 +43,13 @@ CREATE TABLE Taxes (
     FOREIGN KEY (guestCheckId) REFERENCES Orders(guestCheckId) -- Relacionamento com a tabela Orders
 );
 
--- Criar a tabela ServiceCharges
+
 CREATE TABLE ServiceCharges (
     guestCheckLineItemId BIGINT,               -- Relacionamento com o item do pedido
     chargeAmount DECIMAL(10, 2),               -- Valor da taxa de serviço
     FOREIGN KEY (guestCheckLineItemId) REFERENCES OrderItems(guestCheckLineItemId)
 );
 
--- Criar a tabela Payments
 CREATE TABLE Payments (
     guestCheckLineItemId BIGINT,               -- Relacionamento com o item do pedido
     paymentMethod VARCHAR(50),                 -- Método de pagamento (Cartão de Crédito, Dinheiro, etc.)
@@ -58,7 +57,7 @@ CREATE TABLE Payments (
     FOREIGN KEY (guestCheckLineItemId) REFERENCES OrderItems(guestCheckLineItemId)
 );
 
--- Criar a tabela Errors
+
 CREATE TABLE Errors (
     guestCheckLineItemId BIGINT,               -- Relacionamento com o item do pedido
     errorCode VARCHAR(50),                     -- Código do erro
