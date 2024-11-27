@@ -1,6 +1,6 @@
 import os
 
-# Caminho do diretório principal do Data Lake
+
 data_lake_path = r"C:\Users\refol\OneDrive\Desktop\Projeto_coco_bambu\desafio_2"
 
 
