@@ -1,16 +1,17 @@
 import mysql.connector
 
-# Conectando ao banco de dados no container
+# Conectando ao banco de dados no container MySQL
 conn = mysql.connector.connect(
     host="localhost",          
     port=3306,                 
-    user="root",             
-    password="1234",     
-    database="coco_bambu"   
+    user="admin",              
+    password="1234",          
+    database="coco_bambu"      
 )
 
 cursor = conn.cursor()
 
+# Criação das tabelas
 
 create_orders_table = """
 CREATE TABLE IF NOT EXISTS Orders (
@@ -35,7 +36,6 @@ CREATE TABLE IF NOT EXISTS Orders (
 );
 """
 
-
 create_orderitems_table = """
 CREATE TABLE IF NOT EXISTS OrderItems (
     guestCheckLineItemId BIGINT PRIMARY KEY,
@@ -49,7 +49,6 @@ CREATE TABLE IF NOT EXISTS OrderItems (
 );
 """
 
-
 create_taxes_table = """
 CREATE TABLE IF NOT EXISTS Taxes (
     taxNum INT PRIMARY KEY,
@@ -62,7 +61,6 @@ CREATE TABLE IF NOT EXISTS Taxes (
 );
 """
 
-
 create_servicecharges_table = """
 CREATE TABLE IF NOT EXISTS ServiceCharges (
     guestCheckLineItemId BIGINT,
@@ -70,7 +68,6 @@ CREATE TABLE IF NOT EXISTS ServiceCharges (
     FOREIGN KEY (guestCheckLineItemId) REFERENCES OrderItems(guestCheckLineItemId)
 );
 """
-
 
 create_payments_table = """
 CREATE TABLE IF NOT EXISTS Payments (
@@ -81,7 +78,6 @@ CREATE TABLE IF NOT EXISTS Payments (
 );
 """
 
-
 create_errors_table = """
 CREATE TABLE IF NOT EXISTS Errors (
     guestCheckLineItemId BIGINT,
@@ -90,7 +86,7 @@ CREATE TABLE IF NOT EXISTS Errors (
 );
 """
 
-
+# Executando a criação das tabelas
 try:
     cursor.execute(create_orders_table)
     cursor.execute(create_orderitems_table)
@@ -104,5 +100,5 @@ except mysql.connector.Error as err:
     print(f"Erro ao criar as tabelas: {err}")
 finally:
     cursor.close()
-    conn.commit()
-    conn.close()
+    conn.commit()  # Comita as mudanças no banco de dados
+    conn.close()   # Fecha a conexão com o banco de dados

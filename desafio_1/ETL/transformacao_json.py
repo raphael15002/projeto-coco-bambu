@@ -6,11 +6,11 @@ from datetime import datetime
 
 def connect_to_db():
     return pymysql.connect(
-        host='127.0.0.1',         
-        user='root',             
-        password='',            
-        database='coco_bambu',   
-        charset='utf8mb4'
+    host="localhost",          
+    port=3306,                 
+    user="admin",              
+    password="1234",          
+    database="coco_bambu"  
     )
 
 
