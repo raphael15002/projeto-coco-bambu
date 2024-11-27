@@ -4,7 +4,7 @@ import os
 data_lake_path = r"C:\Users\refol\OneDrive\Desktop\Projeto_coco_bambu\desafio_2"
 
 
-# Lista de storeIds que você vai usar
+
 store_ids = ['store_id_1', 'store_id_2']
 
 # Criar a estrutura de pastas
