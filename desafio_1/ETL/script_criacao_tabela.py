@@ -77,8 +77,7 @@ try:
     cursor.execute(create_orderitems_table)
     cursor.execute(create_taxes_table)
     cursor.execute(create_servicecharges_table)
-    cursor.execute(create_payments_table)
-    cursor.execute(create_errors_table)
+   
     
     print("Tabelas criadas com sucesso!")
 except mysql.connector.Error as err:
