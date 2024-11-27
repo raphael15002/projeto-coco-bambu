@@ -69,22 +69,7 @@ CREATE TABLE IF NOT EXISTS ServiceCharges (
 );
 """
 
-create_payments_table = """
-CREATE TABLE IF NOT EXISTS Payments (
-    guestCheckLineItemId BIGINT,
-    paymentMethod VARCHAR(50),
-    amount DECIMAL(10, 2),
-    FOREIGN KEY (guestCheckLineItemId) REFERENCES OrderItems(guestCheckLineItemId)
-);
-"""
 
-create_errors_table = """
-CREATE TABLE IF NOT EXISTS Errors (
-    guestCheckLineItemId BIGINT,
-    errorCode VARCHAR(50),
-    FOREIGN KEY (guestCheckLineItemId) REFERENCES OrderItems(guestCheckLineItemId)
-);
-"""
 
 # Executando a criação das tabelas
 try:

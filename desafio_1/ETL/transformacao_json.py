@@ -30,7 +30,7 @@ def convert_to_datetime(date_str):
 
 def insert_data_from_json(json_file):
     if not check_file_exists(json_file):
-        return  # Se o arquivo não existir, não prossegue
+        return  
 
 
     conn = connect_to_db()
@@ -148,7 +148,9 @@ def insert_data_from_json(json_file):
 
 
 
-file_path = 'C:/Users/refol/OneDrive/Desktop/Projeto_coco_bambu/Data/raw/ERP.json'
+file_path = "C:\\Users\\refol\\OneDrive\\Desktop\\projeto-coco-bambu\\desafio_1\\ETL\\ERP.json"
+
+
 
 
 insert_data_from_json(file_path)
