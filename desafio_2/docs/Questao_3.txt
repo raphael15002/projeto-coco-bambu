@@ -1,0 +1,64 @@
+Se a resposta do endpoint getGuestChecks for alterada e a chave guestChecks.taxes for renomeada para guestChecks.taxation, isso pode ter várias implicações no processo de ingestão e transformação dos dados. Aqui estão as principais consequências e ajustes necessários:
+
+1. Impacto no Código Existente
+O código que processa os dados das APIs, como o script Python que você escreveu para inserir os dados no banco de dados, depende de um formato específico de resposta da API. Se a estrutura do JSON mudar, como no caso da renomeação da chave de taxes para taxation, o código precisará ser adaptado para refletir essa alteração.
+
+Consequências do Renomeio:
+Alteração na Leitura dos Dados: O código que acessa o campo guestChecks.taxes precisará ser atualizado para acessar o novo campo guestChecks.taxation.
+
+Exemplo:
+
+Antes da mudança:
+
+for tax in guest_check['taxes']:
+     Lógica para inserir dados de taxes
+Após a mudança:
+
+for tax in guest_check['taxation']:
+     Lógica para inserir dados de taxation
+
+2. Impacto na Estrutura do Banco de Dados
+Se a tabela de taxes foi projetada para armazenar dados provenientes da chave taxes, é possível que o banco de dados também precise de ajustes. No entanto, como a alteração é apenas no nome do campo e não na estrutura dos dados, não é necessário alterar o banco de dados em si. Mas, se você estiver utilizando algum campo ou relacionamento com o nome exato de taxes, será necessário revisá-lo.
+
+
+3. Alteração nas Transformações de Dados (ETL)
+Como o código de transformação de dados depende do formato do JSON para processá-lo corretamente, o processo de ETL (Extração, Transformação e Carga) também precisará ser modificado para refletir a mudança no nome da chave. Isso inclui:
+
+Leitura de Dados: Alterar a leitura do campo taxes para taxation no código de transformação.
+Validação e Verificação: Validar se a chave renomeada existe antes de tentar processá-la, garantindo que não ocorram erros se o formato dos dados mudar novamente.
+Exemplo de código para adaptar o processo de transformação:
+
+
+taxes = guest_check['taxes']  Acessando o campo taxes
+
+ Após a mudança:
+taxes = guest_check.get('taxation', [])  Usando 'get' para garantir que a chave existe
+
+
+4. Impacto no Armazenamento de Dados
+Se você estiver armazenando os dados em um data lake ou em arquivos JSON, a mudança no nome da chave pode resultar em inconsistências nos dados armazenados. Para garantir que o armazenamento continue funcionando corretamente:
+
+Estrutura de Pastas: Certifique-se de que o processo de armazenamento seja flexível para alterações no formato de chave, para evitar falhas quando novas versões de dados forem recebidas.
+Transformação de Dados: Ao armazenar os dados, aplique transformações que garantam que os dados sejam armazenados no formato esperado. Se necessário, aplique uma transformação adicional para padronizar os dados antes de serem salvos, caso a estrutura da API sofra mudanças no futuro.
+
+5. Impacto em Ferramentas de Análise e Relatórios
+Se você estiver usando ferramentas de análise de dados ou BI (Business Intelligence), como Power BI, Tableau, ou qualquer ferramenta de visualização, será necessário atualizar os relatórios e dashboards que dependem dessa chave.
+
+Exemplos de Impacto:
+Campos Renomeados: As ferramentas que fazem referência ao campo taxes precisarão ser atualizadas para referenciar o novo campo taxation.
+Mapeamento de Dados: Caso você tenha algum script ou ferramenta que mapeia os dados, você precisará atualizar os campos de entrada/saída para refletir a alteração no nome da chave.
+
+
+6. Gerenciamento de Mudanças e Compatibilidade
+Para lidar com mudanças na estrutura dos dados de forma eficiente, uma boa prática é implementar mecanismos de versionamento de API ou usar técnicas como checar a presença das chaves antes de acessá-las.
+
+7. Conclusão e Recomendações
+Em resumo, a alteração de guestChecks.taxes para guestChecks.taxation implicaria:
+
+1. Mudanças no código de transformação: Onde você acessa a chave taxes, você deverá usar taxation.
+2. Revisão das consultas e inserções no banco de dados: A lógica de inserção nas tabelas, como a Taxes, também precisará ser revisada.
+3. Ajustes no processo de ETL: O código de processamento de dados (ETL) deve ser atualizado para refletir o novo nome do campo.
+4.Verificação em ferramentas de análise: Qualquer relatório ou dashboard que utilize a chave taxes também precisará ser ajustado.
+
+
+Por fim, sempre que houver alterações na resposta das APIs, é importante revisar e testar todo o processo de ETL para garantir que os dados sejam extraídos, transformados e carregados corretamente.
