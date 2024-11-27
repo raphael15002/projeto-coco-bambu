@@ -27,6 +27,6 @@ Este projeto foi desenvolvido como parte do processo seletivo para a posição d
 - **Docker**: Para criação do banco e automatização dos scripts.
 
 ---
-** Mudar o o filepath do transformacao_json.py para o do seu computador.**  
+** Mudar o o file_path do transformacao_json.py para o do seu computador.**  
 ** Subir o docker-compose antes de rodar os scripts.**
 
