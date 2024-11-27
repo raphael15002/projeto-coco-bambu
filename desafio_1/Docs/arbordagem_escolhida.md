@@ -11,6 +11,7 @@ Inserção nos Bancos de Dados:
 
 Os dados são inseridos nas tabelas correspondentes no banco de dados MySQL, incluindo Orders, OrderItems, Taxes, ServiceCharges, Payments, e Errors.
 Durante o processo de inserção, são realizadas verificações para garantir que os dados do JSON estejam no formato esperado e que valores ausentes sejam tratados de maneira adequada. Por exemplo, para campos como paymentMethod ou amount, que podem não estar presentes em todos os registros, valores padrão como 0 ou "Unknown" são atribuídos para garantir a integridade dos dados.
+
 2. Justificativa da Escolha da Abordagem
 A escolha dessa abordagem é justificada pelas seguintes razões:
 
