@@ -11,7 +11,6 @@ conn = mysql.connector.connect(
 
 cursor = conn.cursor()
 
-# Criação das tabelas
 
 create_orders_table = """
 CREATE TABLE IF NOT EXISTS Orders (
@@ -71,7 +70,6 @@ CREATE TABLE IF NOT EXISTS ServiceCharges (
 
 
 
-# Executando a criação das tabelas
 try:
     cursor.execute(create_orders_table)
     cursor.execute(create_orderitems_table)
