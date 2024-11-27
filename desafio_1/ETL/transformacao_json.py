@@ -6,21 +6,21 @@ from datetime import datetime
 
 def connect_to_db():
     return pymysql.connect(
-        host='127.0.0.1',         # Alterar para o host do seu banco de dados
-        user='root',              # Seu usuário do MySQL
-        password='',              # Senha vazia
-        database='coco_bambu',    # Nome do seu banco de dados
+        host='127.0.0.1',         
+        user='root',             
+        password='',            
+        database='coco_bambu',   
         charset='utf8mb4'
     )
 
-# Função para verificar se o arquivo existe
+
 def check_file_exists(file_path):
     if not os.path.exists(file_path):
         print(f"Erro: O arquivo {file_path} não foi encontrado!")
         return False
     return True
 
-# Função para converter string em datetime
+
 def convert_to_datetime(date_str):
     try:
         return datetime.strptime(date_str, "%Y-%m-%dT%H:%M:%S")
@@ -139,16 +139,16 @@ def insert_data_from_json(json_file):
                     detail['errorCode']
                 ))
 
-        # Commit após as inserções para garantir que os dados sejam salvos
+        
         conn.commit()
 
-    # Fechar a conexão
+  
     cursor.close()
     conn.close()
 
 
-# Caminho do arquivo JSON
+
 file_path = 'C:/Users/refol/OneDrive/Desktop/Projeto_coco_bambu/Data/raw/ERP.json'
 
-# Chamando a função e passando o arquivo JSON
+
 insert_data_from_json(file_path)
