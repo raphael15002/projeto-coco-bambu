@@ -26,10 +26,4 @@ Este projeto foi desenvolvido como parte do processo seletivo para a posição d
 
 ---
 
-## **Como Rodar o Projeto**
 
-### 1. **Clone o Repositório**
-Primeiro, clone o repositório para o seu computador:
-```bash
-git clone https://github.com/raphael15002/projeto-coco-bambu.git
-cd projeto-coco-bambu
