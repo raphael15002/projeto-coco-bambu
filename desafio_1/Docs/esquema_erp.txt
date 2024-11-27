@@ -1,6 +1,6 @@
 Análise do Esquema JSON - ERP.json
 
-Este arquivo descreve a estrutura do JSON usado no sistema ERP para um pedido de restaurante.
+
 
 1. **Raiz do JSON**
    - **curUTC**: String (Data e hora no formato UTC)
